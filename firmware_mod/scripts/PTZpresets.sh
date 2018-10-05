@@ -53,7 +53,7 @@ move(){
 	DST_STEPS=$2
     STEPS=$(awk -v a="$DST_STEPS" -v b="$SRC_STEPS" 'BEGIN{printf ("%d",a-b)}')
 
-    # Motor runs 1.3 time as long as the number of steps.
+    # Motor runs 1.3 times as long as the number of steps.
     SLEEP_NUM=$(awk -v a="${STEPS//-/}" 'BEGIN{printf ("%f",a*1.3/1000)}')
 
     # "+" Right or Up, "-" Left or Down.
@@ -65,7 +65,7 @@ move(){
         logger "$1 axis DST:$DST_STEPS SRC:$SRC_STEPS ${text#*|} $STEPS"
     fi
 
-    # Waiting for the motor to run.
+    # Wait for the motor to run.
     sleep ${SLEEP_NUM}
 }
 
